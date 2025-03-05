@@ -13,7 +13,6 @@ import java.util.Set;
 @Entity
 public class Theatre {
 
-
     @Id
     private int id;
 
