@@ -1,11 +1,41 @@
 package com.example.kinoback.ticket;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.example.kinoback.showing.Showing;
+import jakarta.persistence.*;
 
 @Entity
 public class Ticket {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private long phoneNumber;
+
+    //many tickets to one showing
+    @ManyToOne
+    @JoinColumn(name = "showingId", referencedColumnName = "id")
+    private Showing showing;
+
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Showing getShowing() {
+        return showing;
+    }
+    public void setShowing(Showing showing) {
+        this.showing = showing;
+    }
+
 }
