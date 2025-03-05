@@ -1,5 +1,9 @@
 package com.example.kinoback.actor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Actor {
@@ -9,9 +13,9 @@ public class Actor {
     @Column(length = 100)
   private String fullName;
 
-    @OneToMany
-    @JoinColumn(name = "ActorMovie", referencedColumnName = "");
-    private int actorId;
+    @OneToMany(mappedBy = "Actor")
+    @JsonBackReference
+    private Set<ActorMovie> actorMovies = new HashSet<>();
 
 
     public String getFullName() {
@@ -30,12 +34,5 @@ public class Actor {
         this.id = id;
     }
 
-    public int getActorId() {
-        return actorId;
-    }
-
-    public void setActorId(int actorId) {
-        this.actorId = actorId;
-    }
 }
 
