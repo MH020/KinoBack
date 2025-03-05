@@ -9,6 +9,10 @@ import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
+enum Genres{
+    HORROR, ROMANCE, ACTION, SCI_FI, DRAMA
+}
+
 @Entity
 public class Movie {
 
