@@ -1,4 +1,6 @@
 package com.example.kinoback.showing;
 
-public class ShowingRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ShowingRepository extends JpaRepository<Showing, Integer> {
 }

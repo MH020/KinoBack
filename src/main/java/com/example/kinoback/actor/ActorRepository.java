@@ -1,4 +1,7 @@
 package com.example.kinoback.actor;
 
-public class ActorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ActorRepository extends JpaRepository<Actor, Integer>{
+
 }
