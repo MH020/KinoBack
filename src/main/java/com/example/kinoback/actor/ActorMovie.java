@@ -16,7 +16,7 @@ public class ActorMovie {
 
     // en film har mange ActorMovies så derfor er dette en many to one
     @ManyToOne
-    @JoinColumn(name = "MovieID",referencedColumnName = "id")
+    @JoinColumn(name = "movieId",referencedColumnName = "id")
     private Movie movie;
 
 

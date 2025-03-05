@@ -24,7 +24,7 @@ public class Theatre {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "Theatre") //mapped by [table name]
+    @OneToMany(mappedBy = "theatre") //mapped by [table name]
     @JsonBackReference
     private Set<Showing> showings = new HashSet<>();
 
