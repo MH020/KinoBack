@@ -1,5 +1,6 @@
 package com.example.kinoback.movie;
 
+import com.example.kinoback.actor.ActorMovie;
 import com.example.kinoback.showing.Showing;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
@@ -8,10 +9,16 @@ import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
+enum Genres{
+    HORROR, ROMANCE, ACTION, SCI_FI, DRAMA
+}
+
 @Entity
 public class Movie {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column(length = 100)
     private String title;
 
@@ -30,6 +37,9 @@ public class Movie {
     @JsonBackReference
     private Set<Showing> showings = new HashSet<>();
 
+    @OneToMany(mappedBy = "movie")
+    @JsonBackReference
+    private Set<ActorMovie> actorMovies = new HashSet<>();
 
     // getters and setters
     public String getTitle() {
