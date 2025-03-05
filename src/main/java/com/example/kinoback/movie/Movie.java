@@ -1,8 +1,12 @@
 package com.example.kinoback.movie;
 
+import com.example.kinoback.showing.Showing;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import java.sql.Time;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Movie {
@@ -10,18 +14,22 @@ public class Movie {
     @Id
     @Column(length = 100)
     private String title;
+
     private int releaseYear;
     private Time duration;
     private int ageRestriction;
     private int genre;
+
     @Column(length = 100)
     private String director;
+
     @Column(length = 900)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "movieId", referencedColumnName = "id")
-    private Movie movie;
+    @OneToMany(mappedBy = "Movie") //mapped by [table name]
+    @JsonBackReference
+    private Set<Showing> showings = new HashSet<>();
+
 
     // getters and setters
     public String getTitle() {
