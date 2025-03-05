@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/actor")
 public class ActorController {
 
-    ActorService actorService;
+    private ActorService actorService;
 
     public ActorController(ActorService actorService){
         this.actorService = actorService;
