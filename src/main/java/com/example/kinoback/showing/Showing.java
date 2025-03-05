@@ -17,8 +17,6 @@ public class Showing {
     private Time time;
     private Date date;
 
-    private int movieId;
-
     @ManyToOne
     @JoinColumn(name = "movieId", referencedColumnName = "id") //name = name of attribute, referencedColumnName = id on movie-object.
     private Movie movie;
