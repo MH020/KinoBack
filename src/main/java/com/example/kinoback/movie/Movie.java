@@ -33,7 +33,7 @@ public class Movie {
     @Column(length = 900)
     private String description;
 
-    @OneToMany(mappedBy = "Movie") //mapped by [table name]
+    @OneToMany(mappedBy = "movie") //mapped by [table name]
     @JsonBackReference
     private Set<Showing> showings = new HashSet<>();
 

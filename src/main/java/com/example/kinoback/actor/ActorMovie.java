@@ -14,9 +14,9 @@ public class ActorMovie {
     @JoinColumn(name = "actorId", referencedColumnName = "id") //name = name of attribute, referencedColumnName = id on movie-object.
     private Actor actor;
 
-    // en film har mange ActorMovies så derfor er dette en many to one 
+    // en film har mange ActorMovies så derfor er dette en many to one
     @ManyToOne
-    @JoinColumn(name = "MovieID",referencedColumnName = "id")
+    @JoinColumn(name = "movieId",referencedColumnName = "id")
     private Movie movie;
 
 

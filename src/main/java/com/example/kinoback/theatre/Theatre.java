@@ -26,7 +26,7 @@ public class Theatre {
     }
 
     //one theatre has many showings
-    @OneToMany(mappedBy = "Theatre") //mapped by [table name]
+    @OneToMany(mappedBy = "theatre") //mapped by [table name]
     @JsonBackReference
     private Set<Showing> showings = new HashSet<>();
 
