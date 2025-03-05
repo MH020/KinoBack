@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 public class Actor {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
 
     @Column(length = 100)
