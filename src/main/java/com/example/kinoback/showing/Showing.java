@@ -8,27 +8,32 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Showing {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Time time;
     private Date date;
 
+    //many showings of one movie
     @ManyToOne
     @JoinColumn(name = "movieId", referencedColumnName = "id") //name = name of attribute, referencedColumnName = id on movie-object.
     private Movie movie;
 
+    //many showings in one theatre
     @ManyToOne
     @JoinColumn(name = "theatreId", referencedColumnName = "id")
     private Theatre theatre;
 
+    //one showing has many tickets.
     @OneToMany(mappedBy = "showing")
     @JsonBackReference
-    private Set<Ticket> tickets;
+    private Set<Ticket> tickets = new HashSet<>();
 
 
     public int getId() {
