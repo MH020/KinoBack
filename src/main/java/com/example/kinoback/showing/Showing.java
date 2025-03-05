@@ -1,10 +1,14 @@
 package com.example.kinoback.showing;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.example.kinoback.movie.Movie;
+import com.example.kinoback.theatre.Theatre;
+import com.example.kinoback.ticket.Ticket;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Set;
 
 @Entity
 public class Showing {
@@ -13,8 +17,19 @@ public class Showing {
     private Time time;
     private Date date;
 
-    
     private int movieId;
-    private int theatreId;
+
+    @ManyToOne
+    @JoinColumn(name = "movieId", referencedColumnName = "id") //name = name of attribute, referencedColumnName = id on movie-object.
+    private Movie movie;
+
+    @ManyToOne
+    @JoinColumn(name = "theatreId", referencedColumnName = "id")
+    private Theatre theatre;
+
+    @OneToMany(mappedBy = "showing")
+    @JsonBackReference
+    private Set<Ticket> tickets;
+
 
 }
