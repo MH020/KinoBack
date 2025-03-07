@@ -15,7 +15,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
+    @GetMapping("/all")
     public List<Movie> getMovies() {
         return movieService.getMovies();
     }
