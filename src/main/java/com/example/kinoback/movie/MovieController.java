@@ -1,5 +1,6 @@
 package com.example.kinoback.movie;
 
+import com.example.kinoback.actor.Actor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,8 @@ public class MovieController {
         return movieService.getMovies();
     }
     @PostMapping("/add")
-    public void addMovie(Movie movie) {
-    movieService.addMovie(movie);
+    public void addMovie(Movie movie, List<Actor> actors) {
+    movieService.addMovie(movie,actors);
     }
 
 }
