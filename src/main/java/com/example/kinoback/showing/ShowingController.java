@@ -1,9 +1,7 @@
 package com.example.kinoback.showing;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,18 @@ public class ShowingController {
     public List<Showing> getShowings() {
         return showingService.getShowings();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Showing> getChosenShowing(@PathVariable int id) {
+        return showingService.getChosenShowing(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    //@GetMapping("/delete/{id}")
+
+    //@GetMapping("/change/{id}")
+
+    //@GetMapping("/createShowing")
 
 }
