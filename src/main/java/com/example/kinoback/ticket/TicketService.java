@@ -2,6 +2,8 @@ package com.example.kinoback.ticket;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TicketService {
     private TicketRepository ticketRepository;
@@ -10,5 +12,9 @@ public class TicketService {
         this.ticketRepository = ticketRepository;
     }
 
+
+    public List<Ticket> getAllTickets (){
+        return ticketRepository.findAll();
+    }
 
 }

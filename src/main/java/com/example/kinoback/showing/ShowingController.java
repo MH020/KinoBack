@@ -25,7 +25,7 @@ public class ShowingController {
 
     //getting how many tickets a customer has bought for a specific showing
     @GetMapping("/{showingId}/tickets/{phoneNumber}")
-    public int getTicketsBelongingToPhoneNumber(int showingId, int phoneNumber){
+    public int getTicketsBelongingToPhoneNumber(@PathVariable int showingId,@PathVariable long phoneNumber){
         return showingService.getTicketsByPhoneNumber(showingId, phoneNumber);
     }
 

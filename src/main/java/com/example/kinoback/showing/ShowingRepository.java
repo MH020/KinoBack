@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface ShowingRepository extends JpaRepository<Showing, Integer> {
 
-    List<Ticket> findAllTicketsForShowing(int showingId);
-
 }

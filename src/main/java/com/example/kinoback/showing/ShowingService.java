@@ -3,6 +3,7 @@ package com.example.kinoback.showing;
 import com.example.kinoback.ticket.Ticket;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,17 +20,22 @@ public class ShowingService {
     }
 
     //gets how many tickets a customer has ordered for a showing.
-    public int getTicketsByPhoneNumber(int showingId, int phoneNumber){
+    public int getTicketsByPhoneNumber(int showingId, long phoneNumber){
         int ticketCounter = 0;
+        Optional<Showing> optionalShowing = showingRepository.findById(showingId); //get showing by showingId.
 
-        List<Ticket> tickets = showingRepository.findAllTicketsForShowing(showingId); //find all tickets belonging to showing
+        if(optionalShowing.isPresent()){
+            Showing showing = optionalShowing.get(); //get showing if optional not empty.
 
-        //verify ticket.phoneNumber equals customer phoneNumber
-        for (Ticket ticket : tickets){
-            if (ticket.getPhoneNumber() == phoneNumber){
-                ticketCounter ++; //if true add 1 to counter.
-            }
-        }
+            System.out.println(showing.getTickets().size());
+
+            for (Ticket ticket : showing.getTickets()){ //get tickets belonging to showing.
+                if (ticket.getPhoneNumber() == phoneNumber){
+                    ticketCounter ++; //if phonenumbers are equal, add 1 to ticketCounter.
+                }
+            }//end of for loop.
+
+        }//end of if (optional)
 
         return ticketCounter;
     }

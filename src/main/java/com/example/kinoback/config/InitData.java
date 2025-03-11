@@ -34,8 +34,6 @@ public class InitData implements CommandLineRunner {
 
     }
 
-
-
     @Override
     public void run(String... args) throws Exception {
         Movie movie1 = new Movie();
@@ -70,5 +68,10 @@ public class InitData implements CommandLineRunner {
         ticket1.setPhoneNumber(12345678);
         ticket1.setShowing(showing1);
         ticketRepository.save(ticket1);
+
+        Ticket ticket2 = new Ticket();
+        ticket2.setPhoneNumber(12345678);
+        ticket2.setShowing(showing1);
+        ticketRepository.save(ticket2);
     }
 }
