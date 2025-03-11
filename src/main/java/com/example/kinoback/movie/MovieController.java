@@ -3,6 +3,12 @@ package com.example.kinoback.movie;
 import com.example.kinoback.actor.Actor;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 import java.util.List;
 
 @RestController
@@ -15,7 +21,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
+    @GetMapping("/all")
     public List<Movie> getMovies() {
         return movieService.getMovies();
     }
