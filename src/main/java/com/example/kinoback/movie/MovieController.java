@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:63343")
 @RequestMapping("/movie")
 public class MovieController {
     private MovieService movieService;
