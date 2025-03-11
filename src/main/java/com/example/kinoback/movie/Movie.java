@@ -38,7 +38,7 @@ public class Movie {
     private Set<Showing> showings = new HashSet<>();
 
     @OneToMany(mappedBy = "movie")
-    @JsonBackReference (value = "actorMovies")
+    @JsonManagedReference (value = "movie")
     private Set<ActorMovie> actorMovies = new HashSet<>();
 
     // getters and setters

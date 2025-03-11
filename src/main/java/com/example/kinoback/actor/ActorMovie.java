@@ -14,13 +14,13 @@ public class ActorMovie {
 
     @ManyToOne
     @JoinColumn(name = "actorId", referencedColumnName = "id") //name = name of attribute, referencedColumnName = id on movie-object.
-    @JsonBackReference
+    @JsonBackReference (value = "actor")
     private Actor actor;
 
     // en film har mange ActorMovies så derfor er dette en many to one
     @ManyToOne
     @JoinColumn(name = "movieId",referencedColumnName = "id")
-    @JsonBackReference
+    @JsonBackReference (value = "movie")
     private Movie movie;
 
 

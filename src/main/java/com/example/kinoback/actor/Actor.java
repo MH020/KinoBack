@@ -16,7 +16,7 @@ public class Actor {
   private String fullName;
 
     @OneToMany(mappedBy = "actor")
-    @JsonBackReference (value = "actorMovies2")
+    @JsonManagedReference (value = "actor")
     private Set<ActorMovie> actorMovies = new HashSet<>();
 
 
