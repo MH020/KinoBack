@@ -1,5 +1,6 @@
 package com.example.kinoback.actor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -15,7 +16,7 @@ public class Actor {
   private String fullName;
 
     @OneToMany(mappedBy = "actor")
-    @JsonBackReference
+    @JsonManagedReference
     private Set<ActorMovie> actorMovies = new HashSet<>();
 
 

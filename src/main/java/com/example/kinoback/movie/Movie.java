@@ -3,6 +3,7 @@ package com.example.kinoback.movie;
 import com.example.kinoback.actor.ActorMovie;
 import com.example.kinoback.showing.Showing;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import java.sql.Time;
@@ -38,7 +39,7 @@ public class Movie {
     private Set<Showing> showings = new HashSet<>();
 
     @OneToMany(mappedBy = "movie")
-    @JsonBackReference
+    @JsonManagedReference
     private Set<ActorMovie> actorMovies = new HashSet<>();
 
     // getters and setters

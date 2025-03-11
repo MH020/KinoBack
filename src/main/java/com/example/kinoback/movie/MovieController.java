@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:63343")
+
 @RequestMapping("/movie")
 public class MovieController {
     private MovieService movieService;
@@ -27,7 +28,8 @@ public class MovieController {
     }
 
     @PostMapping("/add")
-    public void addMovie(Movie movie, List<Actor> actors) {
+    public void addMovie(@RequestBody Movie movie, List<Actor> actors) {
+        System.out.print(movie);
     movieService.addMovie(movie,actors);
     }
 
