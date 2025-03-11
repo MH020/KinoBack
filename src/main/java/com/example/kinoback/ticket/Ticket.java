@@ -16,10 +16,11 @@ public class Ticket {
     @JoinColumn(name = "showingId", referencedColumnName = "id")
     private Showing showing;
 
-
+    // getters and setters
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -27,15 +28,17 @@ public class Ticket {
     public long getPhoneNumber() {
         return phoneNumber;
     }
+
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    // skal de 2 sidste være der??
     public Showing getShowing() {
         return showing;
     }
+
     public void setShowing(Showing showing) {
         this.showing = showing;
     }
-
 }
