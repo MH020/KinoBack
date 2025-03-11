@@ -1,6 +1,8 @@
 package com.example.kinoback.movie;
 
 import com.example.kinoback.actor.Actor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,10 +29,11 @@ public class MovieController {
         return movieService.getMovies();
     }
 
-    @PostMapping("/add")
-    public void addMovie(@RequestBody Movie movie, List<Actor> actors) {
+    @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addMovie(@RequestBody Movie movie) {
         System.out.print(movie);
-    movieService.addMovie(movie,actors);
+        movieService.save(movie);
     }
 
 }

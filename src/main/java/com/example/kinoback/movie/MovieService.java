@@ -25,13 +25,13 @@ public class MovieService {
     }
 
     //This method adds a movie to the database and also adds the actors that are in the movie to the database
-    public void addMovie(Movie movie, List<Actor> actors) {
-       for (Actor actor : actors) {
+    public void save(Movie movie) {
+       /*for (Actor actor : actors) {
            ActorMovie actorMovie = new ActorMovie();
            actorMovie.setMovie(movie);
            actorMovie.setActor(actor);
            actorMovieRepository.save(actorMovie);
-       }
+       }*/
        movieRepository.save(movie);
     }
 }
