@@ -5,33 +5,32 @@ name: Build and deploy JAR app to Azure Web App - KinoBackAPP
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Java version
-        uses: actions/setup-java@v4
-        with:
-          java-version: 'java21'
-          distribution: 'microsoft'
-
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Build with Maven
+      run: mvn clean install
+      
+    - name: Upload JAR as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+          name: spring-boot-app
+          path: target/*.jar
 
   deploy:
     runs-on: ubuntu-latest
