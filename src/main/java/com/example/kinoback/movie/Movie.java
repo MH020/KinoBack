@@ -30,16 +30,15 @@ public class Movie {
 
     @Column(length = 100)
     private String director;
-
     @Column(length = 900)
     private String description;
 
     @OneToMany(mappedBy = "movie") //mapped by [table name]
-    @JsonBackReference
+    @JsonBackReference (value = "showings")
     private Set<Showing> showings = new HashSet<>();
 
     @OneToMany(mappedBy = "movie")
-    @JsonManagedReference
+    @JsonBackReference (value = "actorMovies")
     private Set<ActorMovie> actorMovies = new HashSet<>();
 
     // getters and setters
