@@ -53,3 +53,4 @@ jobs:
           app-name: 'KinoBackAPP'
           slot-name: 'Production'
           package: 'target/*.jar' 
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
