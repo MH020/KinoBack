@@ -28,10 +28,21 @@ public class ShowingController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    //@GetMapping("/delete/{id}")
+    @PostMapping("/create")
+    public ResponseEntity<Showing> createShowing(@RequestBody Showing showing) {
+        Showing newShowing = showingService.createShowing(showing);
+        return ResponseEntity.ok(newShowing);
+    }
+
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<Void> deleteShowing(@PathVariable int id) {
+//        try {
+//            showingService.deleteShowing(id);
+//            return ResponseEntity.noContent().build();
+//        } catch (IllegalArgumentException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     //@GetMapping("/change/{id}")
-
-    //@GetMapping("/createShowing")
-
 }
