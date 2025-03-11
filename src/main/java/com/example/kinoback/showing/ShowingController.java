@@ -17,9 +17,16 @@ public class ShowingController {
     }
 
 
+    //get all showings
     @GetMapping("/all")
     public List<Showing> getShowings() {
         return showingService.getShowings();
+    }
+
+    //getting how many tickets a customer has bought for a specific showing
+    @GetMapping("/{showingId}/tickets/{phoneNumber}")
+    public int getTicketsBelongingToPhoneNumber(int showingId, int phoneNumber){
+        return showingService.getTicketsByPhoneNumber(showingId, phoneNumber);
     }
 
 
