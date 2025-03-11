@@ -1,9 +1,8 @@
 package com.example.kinoback.showing;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +22,16 @@ public class ShowingController {
         return showingService.getShowings();
     }
 
+
+    // Exception handler method to catch RuntimeExceptions thrown within controller
+    @ExceptionHandler(RuntimeException.class)
+
+   // Specifies the response status (500)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
+
+        // Returns ResponseEntity with HTTP 500 status and an error message in the response body
+        // The error message includes the exception's message for debugging purposes
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+    }
 }
