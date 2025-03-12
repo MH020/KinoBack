@@ -1,12 +1,13 @@
 package com.example.kinoback.showing;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:63343")
+@CrossOrigin(origins = "http://localhost:63343, http://localhost:63342")
 @RequestMapping("/showing")
 public class ShowingController {
     private ShowingService showingService;
@@ -21,28 +22,16 @@ public class ShowingController {
         return showingService.getShowings();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Showing> getChosenShowing(@PathVariable int id) {
-        return showingService.getChosenShowing(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+
+    // Exception handler method to catch RuntimeExceptions thrown within controller
+    @ExceptionHandler(RuntimeException.class)
+
+   // Specifies the response status (500)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
+
+        // Returns ResponseEntity with HTTP 500 status and an error message in the response body
+        // The error message includes the exception's message for debugging purposes
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
     }
-
-    @PostMapping("/create")
-    public ResponseEntity<Showing> createShowing(@RequestBody Showing showing) {
-        Showing newShowing = showingService.createShowing(showing);
-        return ResponseEntity.ok(newShowing);
-    }
-
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<Void> deleteShowing(@PathVariable int id) {
-//        try {
-//            showingService.deleteShowing(id);
-//            return ResponseEntity.noContent().build();
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
-    //@GetMapping("/change/{id}")
 }

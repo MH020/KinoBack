@@ -32,7 +32,7 @@ public class Showing {
 
     //one showing has many tickets.
     @OneToMany(mappedBy = "showing")
-    @JsonBackReference
+    @JsonBackReference (value = "tickets") //set jsonbackreference name = showing
     private Set<Ticket> tickets = new HashSet<>();
 
 

@@ -3,6 +3,7 @@ package com.example.kinoback.movie;
 import com.example.kinoback.actor.ActorMovie;
 import com.example.kinoback.showing.Showing;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import java.sql.Time;
@@ -29,16 +30,15 @@ public class Movie {
 
     @Column(length = 100)
     private String director;
-
     @Column(length = 900)
     private String description;
 
     @OneToMany(mappedBy = "movie") //mapped by [table name]
-    @JsonBackReference
+    @JsonBackReference (value = "showings")
     private Set<Showing> showings = new HashSet<>();
 
     @OneToMany(mappedBy = "movie")
-    @JsonBackReference
+    @JsonManagedReference (value = "movie")
     private Set<ActorMovie> actorMovies = new HashSet<>();
 
     // getters and setters
@@ -96,5 +96,13 @@ public class Movie {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
