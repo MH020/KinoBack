@@ -1,8 +1,5 @@
 package com.example.kinoback.movie;
 
-import com.example.kinoback.actor.Actor;
-import com.example.kinoback.actor.ActorMovie;
-import com.example.kinoback.actor.ActorMovieRepository;
 import com.example.kinoback.actor.ActorRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +9,10 @@ import java.util.List;
 public class MovieService {
     private MovieRepository movieRepository;
     private ActorRepository actorRepository;
-    private ActorMovieRepository actorMovieRepository;
 
-    public MovieService(MovieRepository movieRepository, ActorRepository actorRepository, ActorMovieRepository actorMovieRepository){
+    public MovieService(MovieRepository movieRepository, ActorRepository actorRepository){
         this.movieRepository = movieRepository;
         this.actorRepository = actorRepository;
-        this.actorMovieRepository = actorMovieRepository;
     }
 
     public List<Movie> getMovies() {

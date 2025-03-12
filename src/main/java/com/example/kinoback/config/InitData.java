@@ -1,8 +1,6 @@
 package com.example.kinoback.config;
 
 import com.example.kinoback.actor.Actor;
-import com.example.kinoback.actor.ActorMovie;
-import com.example.kinoback.actor.ActorMovieRepository;
 import com.example.kinoback.actor.ActorRepository;
 
 import com.example.kinoback.movie.Movie;
@@ -28,15 +26,14 @@ public class InitData implements CommandLineRunner {
     private TheatreRepository theatreRepository;
     private TicketRepository ticketRepository;
     private ShowingRepository showingRepository;
-    private ActorMovieRepository actorMovieRepository;
 
-    public InitData(MovieRepository movieRepository, ActorRepository actorRepository, TheatreRepository theatreRepository, TicketRepository ticketRepository, ShowingRepository showingRepository, ActorMovieRepository actorMovieRepository){
+
+    public InitData(MovieRepository movieRepository, ActorRepository actorRepository, TheatreRepository theatreRepository, TicketRepository ticketRepository, ShowingRepository showingRepository){
         this.movieRepository = movieRepository;
         this.actorRepository = actorRepository;
         this.theatreRepository =theatreRepository;
         this.ticketRepository = ticketRepository;
         this.showingRepository = showingRepository;
-        this.actorMovieRepository = actorMovieRepository;
 
     }
 
@@ -60,13 +57,6 @@ public class InitData implements CommandLineRunner {
         Actor actor2 = new Actor();
         actor2.setFullName("Arnold Schwarzenegger");
         actorRepository.save(actor2);
-
-        ActorMovie actorMovie = new ActorMovie();
-        actorMovie.setActor(actor1);
-        actorMovie.setMovie(movie1);
-        actorMovieRepository.save(actorMovie);
-
-
 
         Theatre theatre1 = new Theatre();
         theatre1.setSeats(100);

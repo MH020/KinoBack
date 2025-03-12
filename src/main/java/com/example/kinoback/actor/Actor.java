@@ -15,10 +15,6 @@ public class Actor {
     @Column(length = 100)
   private String fullName;
 
-    @OneToMany(mappedBy = "actor")
-    @JsonManagedReference (value = "actor")
-    private Set<ActorMovie> actorMovies = new HashSet<>();
-
 
     public String getFullName() {
         return fullName;
