@@ -18,7 +18,7 @@ public class TicketController {
         this.ticketRepository = ticketRepository;
     }
 
-    @GetMapping("/tickets")
+    @GetMapping("/allTickets")
     public List<Ticket> getTickets() {
         return ticketService.getTickets();
     }
