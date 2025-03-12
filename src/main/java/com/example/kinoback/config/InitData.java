@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.sql.Time;
+import java.time.LocalTime;
+
 @Component
 @Profile("test")
 public class InitData implements CommandLineRunner {
@@ -45,7 +47,7 @@ public class InitData implements CommandLineRunner {
         Movie movie1 = new Movie();
         movie1.setDescription("movie 1 Description");
         movie1.setDirector("Director 1");
-        movie1.setDuration(Time.valueOf("01:45:00"));
+        movie1.setDuration(LocalTime.of(12, 0, 0));
         movie1.setGenre(1);
         movie1.setTitle("Terminator");
         movie1.setReleaseYear(1979);

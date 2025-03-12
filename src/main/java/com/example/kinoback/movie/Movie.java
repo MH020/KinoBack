@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import java.sql.Time;
+
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ public class Movie {
     private String title;
 
     private int releaseYear;
-    private Time duration;
+    private LocalTime duration;
     private int ageRestriction;
     private int genre;
 
@@ -58,11 +59,11 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
-    public Time getDuration() {
+    public LocalTime getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(LocalTime duration) {
         this.duration = duration;
     }
 
