@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:63343, http://localhost:63342")
@@ -20,6 +21,17 @@ public class ShowingController {
     @GetMapping("/all")
     public List<Showing> getShowings() {
         return showingService.getShowings();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Showing> getChosenShowing(@PathVariable int id) {
+        return showingService.getChosenShowing(id);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Showing> createShowing(@RequestBody Showing showing) {
+        Showing newShowing = showingService.createShowing(showing);
+        return ResponseEntity.ok(newShowing);
     }
 
 
