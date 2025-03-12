@@ -96,10 +96,6 @@ public class InitData implements CommandLineRunner {
         movie2.setAgeRestriction(16);
         movieRepository.save(movie2);
 
-        Actor actor2 = new Actor();
-        actor2.setFullName("Arnold Swch");
-        actorRepository.save(actor2);
-
 
         Theatre theatre2 = new Theatre();
         theatre1.setSeats(200);
