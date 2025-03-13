@@ -16,7 +16,6 @@ public class ShowingController {
         this.showingService = showingService;
     }
 
-
     //get all showings
     @GetMapping("/all")
     public List<Showing> getShowings() {
@@ -41,4 +40,5 @@ public class ShowingController {
         // The error message includes the exception's message for debugging purposes
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
     }
+
 }

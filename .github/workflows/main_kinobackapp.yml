@@ -29,7 +29,7 @@ jobs:
     - name: Upload JAR as Artifact
       uses: actions/upload-artifact@v4
       with:
-          name: spring-boot-app
+          name: java-app
           path: target/*.jar
 
   deploy:
@@ -43,13 +43,14 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: java-app
-      
+          name: java-app  
+          path: target  
+          
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'KinoBackAPP'
           slot-name: 'Production'
-          package: 'target/*.jar'
+          package: 'target/*.jar' 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_28580CFFD449462AA21A3962B87645A5 }}
