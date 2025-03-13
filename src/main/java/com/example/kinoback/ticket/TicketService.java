@@ -11,10 +11,13 @@ public class TicketService {
     public TicketService(TicketRepository ticketRepository){
         this.ticketRepository = ticketRepository;
     }
-
-
-    public List<Ticket> getAllTickets (){
+    
+    public List<Ticket> findAll(){
         return ticketRepository.findAll();
+    }
+
+    public void save(Ticket ticket){
+        ticketRepository.save(ticket);
     }
 
 }
