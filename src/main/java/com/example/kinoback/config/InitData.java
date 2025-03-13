@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.sql.Time;
+import java.time.LocalTime;
+
 @Component
 @Profile("test")
 public class InitData implements CommandLineRunner {
@@ -73,10 +75,10 @@ public class InitData implements CommandLineRunner {
 
 
         Showing showing1 = new Showing();
-        showing1.setDate(java.sql.Date.valueOf("2021-12-12"));
+        showing1.setDate(java.sql.Date.valueOf("2021-12-14"));
         showing1.setMovie(movie1);
         showing1.setTheatre(theatre1);
-        showing1.setTime(Time.valueOf("12:00:00"));
+        showing1.setTime(LocalTime.of(12, 0, 0));
         showingRepository.save(showing1);
 
 
@@ -106,7 +108,7 @@ public class InitData implements CommandLineRunner {
         showing2.setDate(java.sql.Date.valueOf("2021-12-14"));
         showing2.setMovie(movie2);
         showing2.setTheatre(theatre2);
-        showing2.setTime(Time.valueOf("14:00:00"));
+        showing2.setTime(LocalTime.of(8, 0, 0));
         showingRepository.save(showing2);
 
 
