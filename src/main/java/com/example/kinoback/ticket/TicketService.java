@@ -17,11 +17,7 @@ public class TicketService {
     }
 
     //method to book a ticket in the database with a phone number
-    public void bookTicket(Ticket ticket, List<Ticket> tickets) {
-        for (Ticket ticket1 : tickets) {
-            ticket1.setPhoneNumber(ticket.getPhoneNumber());
-            ticketRepository.save(ticket1);
-        }
+    public void bookTicket(Ticket ticket) {
         ticketRepository.save(ticket);
     }
 }
