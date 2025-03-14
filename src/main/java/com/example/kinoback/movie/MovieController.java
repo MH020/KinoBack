@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:63343")
-
+@CrossOrigin(origins = "http://localhost:63343, http://localhost:63342")
 @RequestMapping("/movie")
 public class MovieController {
     private MovieService movieService;
@@ -29,9 +28,10 @@ public class MovieController {
         return movieService.getMovies();
     }
 
-    @PostMapping("")
+    @PostMapping("add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addMovie(@RequestBody Movie movie) {
+
         System.out.print(movie);
         movieService.save(movie);
     }

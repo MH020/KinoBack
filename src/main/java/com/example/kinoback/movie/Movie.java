@@ -1,12 +1,12 @@
 package com.example.kinoback.movie;
 
-import com.example.kinoback.actor.ActorMovie;
+import com.example.kinoback.actor.Actor;
 import com.example.kinoback.showing.Showing;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import java.sql.Time;
+
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +24,7 @@ public class Movie {
     private String title;
 
     private int releaseYear;
-    private Time duration;
+    private LocalTime duration;
     private int ageRestriction;
     private int genre;
 
@@ -32,14 +32,18 @@ public class Movie {
     private String director;
     @Column(length = 900)
     private String description;
+    private String actorString;
 
     @OneToMany(mappedBy = "movie") //mapped by [table name]
     @JsonBackReference (value = "showings")
     private Set<Showing> showings = new HashSet<>();
 
-    @OneToMany(mappedBy = "movie")
-    @JsonManagedReference (value = "movie")
-    private Set<ActorMovie> actorMovies = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "actor_movie",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    private Set<Actor> actors = new HashSet<>();
 
     // getters and setters
     public String getTitle() {
@@ -58,11 +62,11 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
-    public Time getDuration() {
+    public LocalTime getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(LocalTime duration) {
         this.duration = duration;
     }
 
@@ -104,5 +108,21 @@ public class Movie {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set<Showing> getShowings() {
+        return showings;
+    }
+
+    public void setShowings(Set<Showing> showings) {
+        this.showings = showings;
+    }
+
+    public String getActorString() {
+        return actorString;
+    }
+
+    public void setActorString(String actorString) {
+        this.actorString = actorString;
     }
 }
