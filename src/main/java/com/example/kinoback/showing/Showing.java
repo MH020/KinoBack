@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.time.LocalTime;
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +17,7 @@ public class Showing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalTime time;
+    private Time time;
     private Date date;
 
     //many showings of one movie
@@ -44,11 +44,11 @@ public class Showing {
         this.id = id;
     }
 
-    public LocalTime getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
