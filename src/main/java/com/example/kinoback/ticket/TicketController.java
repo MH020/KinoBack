@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:63343, http://localhost:63342")
+@CrossOrigin(origins = "http://localhost:63343, http://localhost:63342, https://white-river-03715af10.6.azurestaticapps.net/")
 @RequestMapping("/ticket")
 public class TicketController {
     private TicketService ticketService;
