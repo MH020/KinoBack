@@ -41,6 +41,7 @@ public class InitData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        // test 1
         Movie movie1 = new Movie();
         movie1.setDescription("movie 1 Description");
         movie1.setDirector("Director 1");
@@ -64,10 +65,10 @@ public class InitData implements CommandLineRunner {
 
 
         Showing showing1 = new Showing();
-        showing1.setDate(java.sql.Date.valueOf("2021-12-12"));
+        showing1.setDate(java.sql.Date.valueOf("2021-12-14"));
         showing1.setMovie(movie1);
         showing1.setTheatre(theatre1);
-        showing1.setTime(Time.valueOf("12:00:00"));
+        showing1.setTime(LocalTime.of(12, 0, 0));
         showingRepository.save(showing1);
 
 
@@ -75,5 +76,35 @@ public class InitData implements CommandLineRunner {
         ticket1.setPhoneNumber(12345678);
         ticket1.setShowing(showing1);
         ticketRepository.save(ticket1);
+
+        // Test 2
+        Movie movie2 = new Movie();
+        movie2.setDescription("movie 2 Description");
+        movie2.setDirector("Director 2");
+        movie2.setDuration(Time.valueOf("01:30:00"));
+        movie2.setGenre(3);
+        movie2.setTitle("Action Man");
+        movie2.setReleaseYear(1984);
+        movie2.setAgeRestriction(16);
+        movieRepository.save(movie2);
+
+
+        Theatre theatre2 = new Theatre();
+        theatre1.setSeats(200);
+        theatreRepository.save(theatre2);
+
+
+        Showing showing2 = new Showing();
+        showing2.setDate(java.sql.Date.valueOf("2021-12-14"));
+        showing2.setMovie(movie2);
+        showing2.setTheatre(theatre2);
+        showing2.setTime(LocalTime.of(8, 0, 0));
+        showingRepository.save(showing2);
+
+
+        Ticket ticket2 = new Ticket();
+        ticket2.setPhoneNumber(12345678);
+        ticket2.setShowing(showing1);
+        ticketRepository.save(ticket2);
     }
 }
