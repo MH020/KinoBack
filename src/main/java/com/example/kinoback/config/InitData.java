@@ -46,7 +46,7 @@ public class InitData implements CommandLineRunner {
         Movie movie1 = new Movie();
         movie1.setDescription("movie 1 Description");
         movie1.setDirector("Director 1");
-        movie1.setDuration(Time.valueOf("12:00:00"));
+        movie1.setDuration(LocalTime.of(12, 0, 0));
         movie1.setGenre(1);
         movie1.setTitle("Terminator");
         movie1.setReleaseYear(1979);
@@ -82,7 +82,7 @@ public class InitData implements CommandLineRunner {
         Movie movie2 = new Movie();
         movie2.setDescription("movie 2 Description");
         movie2.setDirector("Director 2");
-        movie2.setDuration(Time.valueOf("01:30:00"));
+        movie2.setDuration(LocalTime.of(12, 0, 0));
         movie2.setGenre(3);
         movie2.setTitle("Action Man");
         movie2.setReleaseYear(1984);
