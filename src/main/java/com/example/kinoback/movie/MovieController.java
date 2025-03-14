@@ -28,7 +28,7 @@ public class MovieController {
         return movieService.getMovies();
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addMovie(@RequestBody Movie movie) {
 
