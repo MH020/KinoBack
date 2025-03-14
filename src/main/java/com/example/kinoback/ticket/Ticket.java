@@ -16,6 +16,13 @@ public class Ticket {
     @JoinColumn(name = "showingId", referencedColumnName = "id")
     private Showing showing;
 
+    public Ticket() {} // Required for JSON deserialization
+
+    public Ticket(Showing showing, long phoneNumber) {
+        this.showing = showing;
+        this.phoneNumber = phoneNumber;
+    }
+
     // getters and setters
     public int getId() {
         return id;

@@ -1,9 +1,6 @@
 package com.example.kinoback.ticket;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @CrossOrigin(origins = "http://localhost:63343, http://localhost:63342")
@@ -24,7 +21,7 @@ public class TicketController {
 
     //method to book a ticket in the database with a phone number
     @PostMapping("/book")
-    public void bookTicket(Ticket ticket) {
+    public void bookTicket(@RequestBody Ticket ticket) {
         ticketService.bookTicket(ticket);
     }
 }
