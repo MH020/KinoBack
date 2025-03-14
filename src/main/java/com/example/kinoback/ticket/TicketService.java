@@ -1,5 +1,6 @@
 package com.example.kinoback.ticket;
 
+import com.example.kinoback.showing.Showing;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,15 @@ public class TicketService {
 
     //method to book a ticket in the database with a phone number
     public void bookTicket(Ticket ticket) {
-        ticketRepository.save(ticket);
+        Showing showing = ticket.getShowing();
+
+        int availableSeats = showing.getTheatre().getSeats();
+        if(availableSeats < 0) {
+            showing.getTheatre().setSeats(availableSeats - 1);
+            ticketRepository.save(ticket);
+
+        } else {
+            throw new RuntimeException("No available seats");
+        }
     }
 }
