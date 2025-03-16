@@ -20,7 +20,9 @@ public class TicketService {
     //method to book a ticket in the database with a phone number
     public void bookTicket(Ticket ticket) {
         Showing showing = ticket.getShowing();
+        ticketRepository.save(ticket);
 
+        /*
         int availableSeats = showing.getTheatre().getSeats();
         if(availableSeats < 0) {
             showing.getTheatre().setSeats(availableSeats - 1);
@@ -28,6 +30,6 @@ public class TicketService {
 
         } else {
             throw new RuntimeException("No available seats");
-        }
+        }*/
     }
 }
